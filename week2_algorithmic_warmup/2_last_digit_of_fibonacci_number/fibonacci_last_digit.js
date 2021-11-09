@@ -14,22 +14,22 @@ function readLine(line) {
     process.exit();
 }
 
+
 function fib(n) {
     const buffer = [0n, 1n];
-    let last = 1n;
+    let last = 1;
 
     if (n < 2) {
         last = buffer[n];
     } else {
-        for (let times = 1; times < n - 1; times++) {
+        for (let times = 0; times < n - 1; times++) {
+            last = (buffer[0] + buffer[1]) % 10n;
             buffer[0] = buffer[1];
             buffer[1] = last;
-            last = buffer[0] + buffer[1];
         }
     }
-
-    const bignumber = last.toString();
-    return bignumber.substr(bignumber.length-1, 1);
+    
+    return Number(last);
 }
 
 module.exports = fib;
